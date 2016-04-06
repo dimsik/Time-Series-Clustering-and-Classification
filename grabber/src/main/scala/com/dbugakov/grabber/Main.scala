@@ -83,7 +83,7 @@ class Worker(fileName: String, apiKey: String) extends Runnable {
           print.write(data + '\n')
         }
       }
-
+      dataBuffer.clear()
       print.close()
     }
   }
