@@ -1,4 +1,4 @@
-package com.dabugakov.grabber
+package com.dbugakov.grabber
 
 import java.io._
 import java.util.Properties
