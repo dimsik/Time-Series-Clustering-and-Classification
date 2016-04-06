@@ -32,13 +32,13 @@ object Main {
 
 class Worker(fileName: String, apiKey: String) extends Runnable {
   def run(): Unit = {
-    while (true) {
-      val cities: List[String] = List("Moscow,RU", "London", "Tokyo", "Kiev", "Amsterdam,NL",
-        "Ankara", "Berlin", "Brussels", "Oslo", "Paris,FR")
-      val dataBuffer = ArrayBuffer.empty[String]
+    val cities: List[String] = List("Moscow,RU", "London", "Tokyo", "Kiev", "Amsterdam,NL",
+      "Ankara", "Berlin", "Brussels", "Oslo", "Paris,FR")
+    val dataBuffer = ArrayBuffer.empty[String]
 
+    while (true) {
       for (city <- cities) {
-        Thread.sleep(10000)
+        Thread.sleep(30000)
 
         val result = {
           val httpClient = new DefaultHttpClient()
@@ -68,7 +68,7 @@ class Worker(fileName: String, apiKey: String) extends Runnable {
           preData += mainFields.getFields("temp")(0).toString()
           preData.mkString(";")
         }
-
+//        println(data)
         dataBuffer += data
 
       }
@@ -78,12 +78,13 @@ class Worker(fileName: String, apiKey: String) extends Runnable {
         printWriter
       }
 
-      if (dataBuffer.length == 100) {
+      if (dataBuffer.length == 50) {
         for (data <- dataBuffer) {
           print.write(data + '\n')
         }
+        dataBuffer.clear()
       }
-      dataBuffer.clear()
+
       print.close()
     }
   }
