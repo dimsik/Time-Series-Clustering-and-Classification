@@ -22,4 +22,4 @@ target
 *.iml
 
 .DS_Store
-.properties
+*.properties
