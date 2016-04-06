@@ -30,23 +30,25 @@
 
 
     <build>
-    <finalName>dateGrabber</finalName>
+        <finalName>dateGrabber</finalName>
     <plugins>
 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>2.6</version>
         <configuration>
             <archive>
                 <manifest>
                     <addClasspath>true</addClasspath>
-                    <mainClass>Main</mainClass>
+                    <mainClass>com.dabugakov.grabber.Main</mainClass>
                 </manifest>
             </archive>
         </configuration>
     </plugin>
         <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
+            <version>2.6</version>
             <executions>
                 <execution>
                     <phase>package</phase>
